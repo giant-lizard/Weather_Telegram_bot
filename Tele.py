@@ -236,16 +236,20 @@ def ae_horario(bot, update, user_data):
 		a=q1;
 	elif hora_prediccion<q3:
 		a=q2;
-	elif hora_prediccion<q4:
-		a=q3;
 	else :
-		a=q4	
+	#elif hora_prediccion<q4:
+		a=q3;
+	#else :
+	#	a=q4	
 
 	#b=parte#+1-localtime()[8]
 	b=int(strftime("%H", localtime()))
 	c=24-a	
 	if hora_prediccion < b :
 		while b<24:
+			#kk=('%d %d %d' %(a, b, c))
+			#update.message.reply_text(kk+texto, reply_markup=markup)
+
 			texto+=('\n%sh:  %sºC  (%s)  %smm  %s %skm/h' % (str(tree[4][0][b-a].attrib)[13:15], tree[4][0][84+b-4*a].text, tree[4][0][108+b-5*a].text, tree[4][0][24+b-2*a].text, tree[4][0][156+2*b-8*a][0].text, tree[4][0][156+2*b-8*a][1].text))
 			if tree[4][0][56+b-3*a].text != '0':
 				texto+=('\t *%s' % tree[4][0][56+b-3*a].text)
@@ -254,12 +258,18 @@ def ae_horario(bot, update, user_data):
 	
 	#b=0
 	while b<24:
+		#kk=('%d %d %d' %(a, b, c))
+		#update.message.reply_text(kk+texto, reply_markup=markup)
+
 		texto+=('\n%sh:  %sºC  (%s)  %smm  %s %skm/h' % (str(tree[4][1][b].attrib)[13:15], tree[4][1][84+b].text, tree[4][1][108+b].text, tree[4][1][24+b].text, tree[4][1][156+2*b][0].text, tree[4][1][156+2*b][1].text))
 		if tree[4][1][56+b].text != '0':
 			texto+=('\t *%s' % tree[4][1][56+b].text)
 		b+=1
 	b=0
 	while b<a:
+		#kk=('%d %d %d' %(a, b, c))
+		#update.message.reply_text(kk, reply_markup=markup)
+
 		texto+=('\n%sh:  %sºC  (%s)  %smm  %s %skm/h' % (str(tree[4][2][b].attrib)[13:15], tree[4][2][84+b-3*c].text, tree[4][2][108+b-4*c].text, tree[4][2][24+b-c].text, tree[4][2][156+2*b-6*c][0].text, tree[4][2][156+2*b-6*c][1].text))
 		if tree[4][2][56+b-2*c].text != '0':
 			texto+=('\t *%s' % tree[4][2][56+b-2*c].text)
